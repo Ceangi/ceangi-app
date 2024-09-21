@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Corario Digital</ion-title>
+  </ion-toolbar>
+
+  <ion-segment>
+    <ion-segment-button (click)="showFavorites = !showFavorites">
+      <ion-label *ngIf="showFavorites">Preferiti</ion-label>
+      <ion-label *ngIf="!showFavorites">Tutte canzoni</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <!-- Alphabetical filter panel -->
+      <ion-col size="2">
+        <ion-list>
+          <ion-item *ngFor="let letter of alphabet" (click)="filterByLetter(letter)">
+            <ion-label>{{ letter }}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="10">
+        <!-- Search bar -->
+        <ion-searchbar [(ngModel)]="searchTerm" placeholder="Cerca titolo"></ion-searchbar>
+
+        <!-- Reset filters button -->
+        <ion-button expand="block" (click)="clearFilters()">
+          Pulisci
+        </ion-button>
+
+        <!-- Songs list -->
+      <ion-list>
+        <ion-item *ngFor="let song of displayedSongs" (click)="openSongDetails(song)">
+          <ion-icon name="heart" slot="start" [color]="song.isFavorite ? 'danger' : 'medium'"
+            (click)="toggleFavorite(song)"></ion-icon>
+          <ion-label>
+            <h2>{{ song.title }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

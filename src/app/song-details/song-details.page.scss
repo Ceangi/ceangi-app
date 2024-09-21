@@ -1,0 +1,38 @@
+ion-content {
+  --padding-top: 16px;
+
+  ion-card {
+    margin: 16px;
+  }
+
+  pre {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    white-space: pre-wrap; // Per andare a capo correttamente
+  }
+
+  .player-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  audio {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+ion-toolbar {
+  --background: #ff8800; // Colore arancione simile
+  --color: white;
+}
+
+ion-content {
+  padding-bottom: 80px;  // Spazio aggiuntivo per il player
+}

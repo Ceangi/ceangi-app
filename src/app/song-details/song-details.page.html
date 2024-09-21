@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ songId }} - {{ songTitle }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ songTitle }} ({{ songKey }})</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <pre>{{ songText }}</pre>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="player-container">
+    <audio controls>
+      <source [src]="songUrl" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</ion-content>

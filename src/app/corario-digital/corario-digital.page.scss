@@ -1,0 +1,93 @@
+.corario-digital {
+  .panel-container {
+    background-color: #f9f9f9;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .alphabet-panel {
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+
+        li {
+          padding: 10px;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #ececec;
+          }
+
+          i {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    ion-searchbar {
+      flex-grow: 1;
+      --background: #fff;
+      --placeholder-color: #888;
+    }
+
+    ion-icon {
+      font-size: 1.5rem;
+      color: #888;
+      margin-left: 10px;
+      cursor: pointer;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+
+  .song-list {
+    margin-top: 10px;
+
+    ion-item {
+      --background: #fff;
+      padding: 10px 15px;
+      margin-bottom: 5px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      ion-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &.favorited {
+          color: red;
+        }
+
+        &:hover {
+          color: #f53d3d;
+        }
+      }
+
+      ion-label a {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

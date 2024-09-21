@@ -3,15 +3,19 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'corario-digital',
+    loadChildren: () => import('./corario-digital/corario-digital.module').then(m => m.CorarioDigitalPageModule)
   },
+  {
+    path: 'song-details',
+    loadChildren: () => import('./song-details/song-details.module').then(m => m.SongDetailsPageModule)
+  }
 ];
+
 
 @NgModule({
   imports: [
