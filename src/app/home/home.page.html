@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>IEANJESUS APP</ion-title>
+    <ion-title>CEANGI APP</ion-title>
   </ion-toolbar>
 
   <ion-segment (ionChange)="segmentChanged($event)" value="apps">
@@ -22,17 +22,17 @@
 <ion-content>
   <ng-container *ngIf="selectedSegment === 'apps'">
     <ion-list>
-      <ion-item>
+      <!-- <ion-item>
         <ion-avatar slot="start">
-          <img src="assets/imgs/santa_biblia.jpg" />
+          <img src="assets/imgs/santa_biblia.png" />
         </ion-avatar>
         <ion-label>
           <h2>SANTA BIBLIA DIGITAL</h2>
           <p>Reina Valera 1960</p>
         </ion-label>
-      </ion-item>
+      </ion-item> -->
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-avatar slot="start">
           <img src="assets/imgs/himnario.jpg" />
         </ion-avatar>
@@ -40,11 +40,11 @@
           <h2>HIMNARIO DIGITAL</h2>
           <p>Manantial de Bendición</p>
         </ion-label>
-      </ion-item>
+      </ion-item> -->
 
       <ion-item routerLink="/corario-digital">
         <ion-avatar slot="start">
-          <img src="assets/imgs/corario.jpg" />
+          <img src="assets/imgs/corario_digital.png" />
         </ion-avatar>
         <ion-label>
           <h2>CORARIO DIGITAL</h2>
@@ -53,7 +53,7 @@
       </ion-item>
 
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-avatar slot="start">
           <img src="assets/imgs/corario_infantil.jpg" />
         </ion-avatar>
@@ -61,9 +61,9 @@
           <h2>CORARIO INFANTIL</h2>
           <p>Coros y Dinámicas</p>
         </ion-label>
-      </ion-item>
+      </ion-item> -->
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-avatar slot="start">
           <img src="assets/imgs/directorio.jpg" />
         </ion-avatar>
@@ -71,7 +71,7 @@
           <h2>DIRECTORIO DIGITAL</h2>
           <p>Congregaciones - Ecuador.</p>
         </ion-label>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </ng-container>
 
