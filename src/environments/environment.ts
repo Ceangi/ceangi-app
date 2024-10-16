@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: 'https://ceangi-be.onrender.com'
+  endpoint: 'https://ceangi-be.onrender.com/'
 };
 
 /*
