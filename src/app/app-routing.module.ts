@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'corario-digital',
+    path: 'corario',
     loadChildren: () => import('./corario-digital/corario-digital.module').then(m => m.CorarioDigitalPageModule)
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./song-details/song-details.module').then(m => m.SongDetailsPageModule)
   },
   {
-    path: 'insert-song',
+    path: 'inserisci',
     loadChildren: () => import('./insert-song/insert-song.module').then(m => m.InsertSongPageModule)
   }
 ];

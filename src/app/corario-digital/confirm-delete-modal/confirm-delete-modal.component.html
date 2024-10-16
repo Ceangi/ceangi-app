@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Conferma cancellazione</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss()">Chiudi</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Sei sicuro di voler cancellare?</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <!-- Delete Button -->
+            <ion-button expand="block" color="danger" (click)="confirmDelete()">Conferma cancellazione</ion-button>
+
+            <!-- Cancel Button -->
+            <ion-button expand="block" (click)="dismiss()">Indietro</ion-button>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

@@ -32,7 +32,11 @@ export class SongService {
         return this.http.post<Song>(API_URL + 'createSong', song, httpOptions);
     }
 
-    getSongById(id: string): Observable<Song> {
-        return this.http.get<Song>(API_URL + `getSongById/${id}`);
+    getSongById(songId: string): Observable<Song> {
+        return this.http.get<Song>(API_URL + `getSongById/${songId}`);
+    }
+
+    deleteSongById(songId: string): Observable<any> {
+        return this.http.delete(API_URL + `deleteSongById/${songId}`);
     }
 }

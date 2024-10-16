@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Song, SongService } from 'src/services/song.service';
+import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 
 
 @Component({
@@ -11,28 +12,9 @@ import { Song, SongService } from 'src/services/song.service';
 export class CorarioDigitalPage {
   selectedSegment: string = 'coros';
 
-  constructor(private navCtrl: NavController, private songService: SongService) { }
+  constructor(private navCtrl: NavController, private modalController: ModalController, private songService: SongService) { }
 
-  songs: Song[] = [
-    { id: 1, title: 'Alabare, alabare', link: '', isFavorite: false },
-    { id: 2, title: 'Bueno es alabarte Jehová', link: '', isFavorite: false },
-    { id: 3, title: 'Cantad a Jehová cántico nuevo', link: '', isFavorite: false },
-    { id: 4, title: 'Cristo maravilloso', link: '', isFavorite: false },
-    { id: 5, title: 'Cristo no está muerto', link: '', isFavorite: false },
-    { id: 6, title: 'Dame un corazón', link: '', isFavorite: false },
-    { id: 7, title: 'Digno de gloria y alabanza', link: '', isFavorite: false },
-    { id: 8, title: 'Él es mi Rey', link: '', isFavorite: false },
-    { id: 9, title: 'El gozo del Señor', link: '', isFavorite: false },
-    { id: 10, title: 'En mi corazón hay banderas', link: '', isFavorite: false },
-    { id: 11, title: 'Gozo, gozo, gozo yo quería', link: '', isFavorite: false },
-    { id: 12, title: 'Pueblos todos batid las manos', link: '', isFavorite: false },
-    { id: 13, title: 'Se mueve la mano de Dios', link: '', isFavorite: false },
-    { id: 14, title: 'Si salvo soy', link: '', isFavorite: false },
-    { id: 15, title: 'Sin santidad', link: '', isFavorite: false },
-    { id: 16, title: 'Solamente en Cristo', link: '', isFavorite: false },
-    { id: 17, title: 'Te amo con el amor del Señor', link: '', isFavorite: false },
-    { id: 18, title: 'Tenme brillando Señor', link: '', isFavorite: false }
-  ];
+  songs: Song[] = [];
 
   searchTerm: string = '';
   selectedLetter: string = '';
@@ -126,6 +108,38 @@ export class CorarioDigitalPage {
   
   segmentChanged(event: any) {
     this.selectedSegment = event.detail.value;
+  }
+
+  async presentDeleteConfirmation(song: Song) {
+    const modal = await this.modalController.create({
+      component: ConfirmDeleteModalComponent,
+      componentProps: { songId: song.id }
+    });
+
+    modal.onDidDismiss().then((result) => {
+      if (result.data && result.data.confirmed && song.id) {
+        this.deleteSongById(song.id);
+      }
+    });
+
+    return await modal.present();
+  }
+
+  deleteSongById(songId: number) {
+    this.songService.deleteSongById(songId.toString()).subscribe(
+      (response) => {
+
+        // Remove song from displayedSongs array
+        const index = this.displayedSongs.findIndex(s => s.id === songId);
+        if (index > -1) {
+          this.displayedSongs.splice(index, 1);
+        }
+      },
+      (error) => {
+        // Handle error in deletion
+        console.error('Error deleting song:', error);
+      }
+    );
   }
   
 }
