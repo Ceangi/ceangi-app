@@ -10,17 +10,17 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ songTitle }} ({{ songKey }})</ion-card-title>
+      <ion-card-title>{{ songTitle }} ({{ songChord }})</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <pre>{{ songText }}</pre>
+      <div [innerHTML]="songLyrics"></div> 
     </ion-card-content>
   </ion-card>
 
-  <div class="player-container">
+  <!-- <div class="player-container">
     <audio controls>
       <source [src]="songUrl" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
-  </div>
+  </div> -->
 </ion-content>

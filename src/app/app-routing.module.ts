@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'song-details',
     loadChildren: () => import('./song-details/song-details.module').then(m => m.SongDetailsPageModule)
+  },
+  {
+    path: 'insert-song',
+    loadChildren: () => import('./insert-song/insert-song.module').then(m => m.InsertSongPageModule)
   }
 ];
 

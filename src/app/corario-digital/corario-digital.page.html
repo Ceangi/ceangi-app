@@ -1,7 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-
       <ion-back-button (click)="goBack()"></ion-back-button>
     </ion-buttons>
     <ion-title>Corario Digital</ion-title>
@@ -24,6 +23,11 @@
         <!-- Alphabetical filter panel -->
         <ion-col size="2">
           <ion-list>
+            <ion-item>
+              <ion-icon name="heart"[color]="showFavorites ? 'danger' : 'medium'"
+              (click)="showFavorites = !showFavorites"></ion-icon>
+            </ion-item>
+
             <ion-item *ngFor="let letter of alphabet" (click)="filterByLetter(letter)">
               <ion-label>{{ letter }}</ion-label>
             </ion-item>

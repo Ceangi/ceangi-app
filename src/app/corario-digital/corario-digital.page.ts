@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Song, SongService } from 'src/services/song.service';
 
-interface Song {
-  id: number,
-  title: string;
-  link: string;
-  isFavorite?: boolean;
-}
 
 @Component({
   selector: 'app-corario-digital',
@@ -16,7 +11,7 @@ interface Song {
 export class CorarioDigitalPage {
   selectedSegment: string = 'coros';
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private songService: SongService) { }
 
   songs: Song[] = [
     { id: 1, title: 'Alabare, alabare', link: '', isFavorite: false },
@@ -46,7 +41,19 @@ export class CorarioDigitalPage {
   alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   ngOnInit() {
+    this.loadSongs();
     this.loadFavorites();
+  }
+
+  loadSongs() {
+    this.songService.getSongs().subscribe(
+      (data: Song[]) => {
+        this.songs = data;
+      },
+      (error) => {
+        console.error('Errore nel caricamento delle canzoni', error);
+      }
+    );
   }
 
   get filteredSongs() {
