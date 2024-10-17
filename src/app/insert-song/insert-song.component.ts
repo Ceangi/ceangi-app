@@ -95,7 +95,7 @@ export class InsertSongComponent {
         next: (result) => {
           this.presentToast('Song created successfully', 'success');
           console.log('Song created successfully:', result);
-
+          this.songForm.reset();
         },
         error: (err) => {
           this.presentToast('Error creating song', 'danger');

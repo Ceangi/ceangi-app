@@ -3,7 +3,6 @@ import { ModalController, NavController } from '@ionic/angular';
 import { Song, SongService } from 'src/services/song.service';
 import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 
-
 @Component({
   selector: 'app-corario-digital',
   templateUrl: './corario-digital.page.html',
@@ -12,7 +11,11 @@ import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-dele
 export class CorarioDigitalPage {
   selectedSegment: string = 'coros';
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, private songService: SongService) { }
+  constructor(
+    private navCtrl: NavController,
+    private modalController: ModalController,
+    private songService: SongService
+  ) { }
 
   songs: Song[] = [];
 
@@ -55,11 +58,14 @@ export class CorarioDigitalPage {
       );
     }
 
-    return filtered;
+    // Sort alphabetically by title
+    return filtered.sort((a, b) => a.title.localeCompare(b.title));
   }
 
   get displayedSongs() {
-    return this.showFavorites ? this.songs.filter(song => song.isFavorite) : this.filteredSongs;
+    return this.showFavorites
+      ? this.songs.filter(song => song.isFavorite)
+      : this.filteredSongs;
   }
 
   // Toggle favorite status of a song
@@ -92,20 +98,21 @@ export class CorarioDigitalPage {
 
   filterByLetter(letter: string) {
     this.selectedLetter = letter;
+    this.loadSongs();
   }
 
   openSongDetails(song: any) {
     this.navCtrl.navigateForward(`/song-details`, {
       queryParams: {
         id: song.id,
-      }
-    })
+      },
+    });
   }
 
   goBack() {
     this.navCtrl.back();
   }
-  
+
   segmentChanged(event: any) {
     this.selectedSegment = event.detail.value;
   }
@@ -113,7 +120,7 @@ export class CorarioDigitalPage {
   async presentDeleteConfirmation(song: Song) {
     const modal = await this.modalController.create({
       component: ConfirmDeleteModalComponent,
-      componentProps: { songId: song.id }
+      componentProps: { songId: song.id },
     });
 
     modal.onDidDismiss().then((result) => {
@@ -128,11 +135,10 @@ export class CorarioDigitalPage {
   deleteSongById(songId: number) {
     this.songService.deleteSongById(songId.toString()).subscribe(
       (response) => {
-
         // Remove song from displayedSongs array
-        const index = this.displayedSongs.findIndex(s => s.id === songId);
+        const index = this.songs.findIndex(s => s.id === songId);
         if (index > -1) {
-          this.displayedSongs.splice(index, 1);
+          this.songs.splice(index, 1);
         }
       },
       (error) => {
@@ -141,5 +147,4 @@ export class CorarioDigitalPage {
       }
     );
   }
-  
 }
