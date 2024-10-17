@@ -3,20 +3,34 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="goBack()"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ songId }} - {{ songTitle }}</ion-title>
+    <ion-title>{{ songTitle }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ songTitle }} ({{ songChord }})</ion-card-title>
+      <ion-card-title>
+        <span class="song-title-container">{{ songTitle }}</span> <span *ngIf="songChord">({{ songChord }})</span>
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <div class="lyrics-container" [innerHTML]="songLyrics"></div> 
+      <div class="song-detail-container">
+        <div class="lyrics-container" [ngStyle]="{'font-size': fontSize + 'px'}" [innerHTML]="songLyrics">
+        </div>
+        <div class="zoom-controls">
+          <ion-button size="small" (click)="decreaseFontSize()">A-</ion-button>
+          <ion-button size="small" (click)="increaseFontSize()">A+</ion-button>
+          <!-- <ion-button (click)="toggleDarkMode()">
+          <ion-icon [name]="isDarkMode ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+          {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
+        </ion-button> -->
+        </div>
+      </div>
     </ion-card-content>
   </ion-card>
 
+  <!-- Audio Player (if needed) -->
   <!-- <div class="player-container">
     <audio controls>
       <source [src]="songUrl" type="audio/mpeg">

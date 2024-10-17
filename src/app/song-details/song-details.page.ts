@@ -10,12 +10,18 @@ import { SongService } from 'src/services/song.service';
 })
 export class SongDetailsPage implements OnInit {
   songId: string = "";
-  songTitle: string = "Alabare";
-  songLyrics: string = `//Alabaré, alabaré,Alabaré, Alabaré a mi Señor.//\n Juan vio el numero, de los redimidos, \n Y todos alababan al Señor,\n Unos oraban, otros cantaban, \n Y todos alababan al Señor.`;
-  songChord: string = "E";
-  songUrl: string = "assets musica";
+  songTitle: string = "";
+  songLyrics: string = ``;
+  songChord: string = "";
+  songUrl: string = "";
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController, private songService: SongService
+  fontSize: number = 16; // Default font size
+  isDarkMode: boolean = false; // Track theme mode
+
+  constructor(
+    private route: ActivatedRoute,
+    private navCtrl: NavController,
+    private songService: SongService
   ) { }
 
   ngOnInit() {
@@ -23,15 +29,24 @@ export class SongDetailsPage implements OnInit {
       this.songId = params['id'] || '1'; // Get the id from query parameters
       this.getSongDetails(this.songId);
     });
+
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+      this.fontSize = parseInt(savedFontSize, 10);
+    }
+
+    const savedTheme = localStorage.getItem('darkMode');
+    this.isDarkMode = savedTheme === 'true';
+    this.applyTheme(this.isDarkMode);
   }
 
   getSongDetails(songId: string) {
     this.songService.getSongById(songId).subscribe(
       (data: any) => {
-        this.songTitle = data.title; // Adjust according to your API response structure
-        this.songLyrics = data.lyrics; // Adjust according to your API response structure
-        this.songChord = data.chord; // Adjust according to your API response structure
-        this.songUrl = data.url; // Adjust according to your API response structure
+        this.songTitle = data.title;
+        this.songLyrics = data.lyrics;
+        this.songChord = data.chord;
+        this.songUrl = data.url;
       },
       (error) => {
         console.error('Error fetching song details', error);
@@ -39,8 +54,37 @@ export class SongDetailsPage implements OnInit {
     );
   }
 
-  // Metodo per tornare indietro
+  // Method to go back
   goBack() {
     this.navCtrl.back();
+  }
+
+  // Method to increase font size
+  increaseFontSize() {
+    if (this.fontSize < 32) { // Max font size limit
+      this.fontSize += 2;
+      localStorage.setItem('fontSize', this.fontSize.toString()); // Save to localStorage
+    }
+
+  }
+
+  // Method to decrease font size
+  decreaseFontSize() {
+    if (this.fontSize > 12) { // Min font size limit
+      this.fontSize -= 2;
+      localStorage.setItem('fontSize', this.fontSize.toString()); // Save to localStorage
+
+    }
+  }
+
+  // Method to toggle dark mode
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    this.applyTheme(this.isDarkMode);
+    localStorage.setItem('darkMode', this.isDarkMode.toString());
+  }
+
+  applyTheme(isDarkMode: boolean) {
+    document.body.classList.toggle('dark', isDarkMode);
   }
 }
