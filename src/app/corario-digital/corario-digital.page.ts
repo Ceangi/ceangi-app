@@ -117,6 +117,10 @@ export class CorarioDigitalPage {
     this.selectedSegment = event.detail.value;
   }
 
+  goToInsertSong() {
+    this.navCtrl.navigateForward(`/inserisci`);
+  }
+
   async presentDeleteConfirmation(song: Song) {
     const modal = await this.modalController.create({
       component: ConfirmDeleteModalComponent,

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button (click)="goBack()"></ion-back-button>
+      <ion-back-button (click)="goBack()" text="Indietro"></ion-back-button>
     </ion-buttons>
     <ion-title>Corario Digital</ion-title>
   </ion-toolbar>
@@ -38,15 +38,19 @@
           <!-- Search bar -->
           <div class="search-container">
             <ion-searchbar [(ngModel)]="searchTerm" placeholder="Cerca titolo"></ion-searchbar>
-            <ion-button expand="block" (click)="clearFilters()">
+            <ion-button size="small" (click)="clearFilters()">
               <ion-icon slot="start" name="refresh"></ion-icon>
-              
+            </ion-button>
+            <ion-button size="small" (click)="goToInsertSong()">
+              <ion-icon slot="start" name="add"></ion-icon>
             </ion-button>
           </div>
 
           <!-- Reset filters button -->
 
-
+          <div class="displayed-song-container">
+            <span>{{ displayedSongs.length }} coros</span>
+          </div>
           <!-- Songs list -->
           <ion-list *ngIf="displayedSongs.length > 0; else noItemsMessage">
             <ion-item *ngFor="let song of displayedSongs">

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Song, SongService } from 'src/services/song.service';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { Location } from '@angular/common'; // Import Location
 
 @Component({
@@ -63,6 +63,7 @@ export class InsertSongComponent {
   constructor(private formBuilder: FormBuilder,
     private songService: SongService,
     private toastController: ToastController,
+    private navCtrl: NavController,
     private location: Location) {
     this.item = '';
     this.songForm = this.formBuilder.group({
@@ -82,6 +83,9 @@ export class InsertSongComponent {
     toast.present();
   }
 
+  goBack() {
+    this.navCtrl.back();
+  }
 
   saveSong() {
     if (this.songForm.valid) {

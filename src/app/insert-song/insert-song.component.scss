@@ -1,12 +1,12 @@
 .editor {
-  height: 60vh;
+  height: 50vh;
   overflow-y: auto;
 }
-  .title-link {
-    color: inherit; /* Uses the toolbar color */
-    text-decoration: none; /* Removes default link styling */
-    margin-left: 10px; /* Adds a little space between the title and the link */
-  }
-  .title-link:hover {
-    text-decoration: underline; /* Optional: Adds underline on hover */
-  }
+.title-link {
+  color: inherit; /* Uses the toolbar color */
+  text-decoration: none; /* Removes default link styling */
+  margin-left: 10px; /* Adds a little space between the title and the link */
+}
+.title-link:hover {
+  text-decoration: underline; /* Optional: Adds underline on hover */
+}

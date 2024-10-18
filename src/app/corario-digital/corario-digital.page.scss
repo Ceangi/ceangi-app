@@ -94,3 +94,13 @@
     }
   }
 }
+.displayed-song-container {
+  display: flex;
+  flex-direction: row-reverse;
+  span {
+    padding: 0 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    color: black;
+  }
+}
