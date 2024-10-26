@@ -57,7 +57,7 @@
               <ion-icon name="heart" slot="start" [color]="song.isFavorite ? 'danger' : 'medium'"
                 (click)="toggleFavorite(song)"></ion-icon>
               <ion-label (click)="openSongDetails(song)">
-                <h2>{{ song.title }}</h2>
+                <div> <span class="index">{{ song.index }}. </span> <span class="title">{{ song.title }}</span> </div>
               </ion-label>
               <!-- <ion-icon name="trash" slot="end" color="danger" (click)="presentDeleteConfirmation(song)"></ion-icon> -->
             </ion-item>

@@ -60,17 +60,20 @@
           color: #f53d3d;
         }
       }
+    }
+  }
+}
+::ng-deep ion-label {
+  .index {
+    color: #bbbbbb;
+  }
+  .title {
+    font-size: 1rem;
+    color: #383737;
+    text-decoration: none;
 
-      ion-label a {
-        font-size: 1rem;
-        font-weight: bold;
-        color: #333;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
