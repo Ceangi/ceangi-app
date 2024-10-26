@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'inserisci',
     loadChildren: () => import('./insert-song/insert-song.module').then(m => m.InsertSongPageModule)
+  },
+  {
+    path: 'edit-song/:id',  // Added route for editing a song
+    loadChildren: () => import('./edit-song/edit-song.module').then(m => m.EditSongModule)
   }
 ];
 

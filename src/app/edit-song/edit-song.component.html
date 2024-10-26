@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="goBack()" text="Indietro"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            CEANGI APP
+            <a [routerLink]="['/corario']" class="title-link"> | Corario</a>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Modifica dettagli coro</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <form [formGroup]="songForm" (ngSubmit)="saveSong()">
+                <ion-item>
+                    <ion-label position="stacked">Indice</ion-label>
+                    <ion-input formControlName="index" type="number" placeholder="Inserisci indice"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked">Titolo</ion-label>
+                    <ion-input formControlName="title" placeholder="Inserisci titolo"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked">Accordo</ion-label>
+                    <ion-select formControlName="chord" placeholder="Seleziona accordo">
+                        <ion-select-option *ngFor="let chord of chords" [value]="chord.value">{{ chord.label
+                            }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="stacked"></ion-label>
+                    <quill-editor formControlName="lyrics" class="editor"
+                        placeholder="Inserisci testo"></quill-editor>
+                </ion-item>
+
+                <ion-button expand="block" [disabled]="!songForm.valid" type="submit">Salva</ion-button>
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

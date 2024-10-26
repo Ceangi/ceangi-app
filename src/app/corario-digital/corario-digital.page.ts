@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { Song, SongService } from 'src/services/song.service';
 import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-corario-digital',
@@ -14,6 +15,7 @@ export class CorarioDigitalPage {
   constructor(
     private navCtrl: NavController,
     private modalController: ModalController,
+    private router: Router,
     private songService: SongService
   ) { }
 
@@ -134,6 +136,10 @@ export class CorarioDigitalPage {
     });
 
     return await modal.present();
+  }
+  editSong(song: Song) {
+    // Navigate to the edit song page or open a modal
+    this.router.navigate(['/edit-song', song.id]);
   }
 
   deleteSongById(songId: number) {

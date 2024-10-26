@@ -40,4 +40,7 @@ export class SongService {
     deleteSongById(songId: string): Observable<any> {
         return this.http.delete(API_URL + `deleteSongById/${songId}`);
     }
+    updateSong(songId: string, song: Song): Observable<Song> {
+        return this.http.put<Song>(API_URL + `updateSong/${songId}`, song, httpOptions);
+    }
 }
