@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 
 export interface Song {
     id?: number;
+    index?: number,
     title: string;
     lyrics?: string,
     chord?: string,

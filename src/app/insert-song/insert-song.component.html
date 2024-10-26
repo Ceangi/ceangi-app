@@ -19,6 +19,10 @@
     <ion-card-content>
       <form [formGroup]="songForm" (ngSubmit)="saveSong()">
         <ion-item>
+          <ion-label position="stacked">Indice</ion-label>
+          <ion-input formControlName="index" placeholder="Inserisci indice"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-label position="stacked">Titolo canzone</ion-label>
           <ion-input formControlName="title" placeholder="Inserisci titolo canzone"></ion-input>
         </ion-item>

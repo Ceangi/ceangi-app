@@ -67,6 +67,7 @@ export class InsertSongComponent {
     private location: Location) {
     this.item = '';
     this.songForm = this.formBuilder.group({
+      index: ['', Validators.required],
       title: ['', Validators.required],
       chord: [''],
       lyrics: ['', Validators.required]
@@ -90,6 +91,7 @@ export class InsertSongComponent {
   saveSong() {
     if (this.songForm.valid) {
       const newSong: Song = {
+        index: this.songForm.get('index')?.value,
         title: this.songForm.get('title')?.value,
         lyrics: this.songForm.get('lyrics')?.value,
         chord: this.songForm.get('chord')?.value,
