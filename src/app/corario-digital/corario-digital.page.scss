@@ -63,6 +63,16 @@
     }
   }
 }
+
+::ng-deep ion-list.song-list {
+  overflow: scroll;
+  height: 80vh;
+}
+::ng-deep ion-list.alphabet-list {
+  overflow: scroll;
+  height: 90vh;
+}
+
 ::ng-deep ion-label {
   text-decoration: none;
 

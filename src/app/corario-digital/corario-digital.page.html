@@ -22,7 +22,7 @@
       <ion-row>
         <!-- Alphabetical filter panel -->
         <ion-col size="2">
-          <ion-list>
+          <ion-list class="alphabet-list">
             <ion-item>
               <ion-icon name="heart" [color]="showFavorites ? 'danger' : 'medium'"
                 (click)="showFavorites = !showFavorites"></ion-icon>
@@ -52,7 +52,7 @@
             <span>{{ displayedSongs.length }} coros</span>
           </div>
           <!-- Songs list -->
-          <ion-list *ngIf="displayedSongs.length > 0; else noItemsMessage">
+          <ion-list class="song-list" *ngIf="displayedSongs.length > 0; else noItemsMessage">
             <ion-item *ngFor="let song of displayedSongs">
               <ion-icon name="heart" slot="start" [color]="song.isFavorite ? 'danger' : 'medium'"
                 (click)="toggleFavorite(song)"></ion-icon>
