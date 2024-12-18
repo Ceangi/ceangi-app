@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/services/user.service'; // Adjust the path as necessary
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
@@ -13,10 +13,14 @@ export class ProfilePage implements OnInit {
   user: any; // Store user data
   loading: boolean = true; // To handle loading state
 
-  constructor(private userService: UserService, private authService: AuthService, private router: Router) { }
+  constructor(private userService: UserService,
+    private authService: AuthService, private router: Router,
+    private cdr: ChangeDetectorRef // Inject ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.user = this.userService.getUser();
+    this.cdr.detectChanges(); // Manually trigger change detection
   }
 
   logout() {

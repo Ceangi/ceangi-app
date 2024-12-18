@@ -5,17 +5,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{ user?.name }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-item>
-          <p>{{ user?.email }}</p>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
-    <ion-button expand="block" (click)="logout()">Logout</ion-button>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ user?.name?user?.name: "N.A" }} {{ user?.surname?user?.surname: "N.A" }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <p>{{ user?.email?user?.email: "N.A" }}</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" (click)="logout()">Logout</ion-button>
 </ion-content>
