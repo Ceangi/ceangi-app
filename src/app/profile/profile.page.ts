@@ -20,6 +20,9 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getUser();
+    if (!this.user?.accessToken) {
+      this.router.navigate(['/login']);
+    }
     this.cdr.detectChanges(); // Manually trigger change detection
   }
 
