@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registrati</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registrati</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="register-container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Crea un nuovo account</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-label position="floating">Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="name" name="name" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Cognome</ion-label>
+            <ion-input type="text" [(ngModel)]="surname" name="surname" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" [(ngModel)]="email" name="email" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="password" name="password" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Conferma Password</ion-label>
+            <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-button expand="block" type="submit">Registrati</ion-button>
+        </form>
+
+        <div class="login-link">
+          <p>Hai già un account? <a routerLink="/login">Accedi</a></p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

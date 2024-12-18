@@ -1,0 +1,17 @@
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 16px;
+  }
+
+  .register-link {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .register-link a {
+    color: var(--ion-color-primary);
+    text-decoration: none;
+  }

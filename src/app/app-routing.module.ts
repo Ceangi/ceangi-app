@@ -21,6 +21,18 @@ const routes: Routes = [
   {
     path: 'edit-song/:id',  // Added route for editing a song
     loadChildren: () => import('./edit-song/edit-song.module').then(m => m.EditSongModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
 ];
 

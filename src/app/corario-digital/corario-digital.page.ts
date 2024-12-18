@@ -3,6 +3,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { Song, SongService } from 'src/services/song.service';
 import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 import { Router } from '@angular/router';
+import { UserService } from 'src/services/user.service';
 
 @Component({
   selector: 'app-corario-digital',
@@ -16,7 +17,9 @@ export class CorarioDigitalPage {
     private navCtrl: NavController,
     private modalController: ModalController,
     private router: Router,
-    private songService: SongService
+    private songService: SongService,
+    private userService: UserService
+
   ) { }
 
   songs: Song[] = [];
@@ -24,12 +27,13 @@ export class CorarioDigitalPage {
   searchTerm: string = '';
   selectedLetter: string = '';
   showFavorites: boolean = false;
-
+  isModeratorOrAdmin: boolean = false;
   alphabet: string[] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   ngOnInit() {
     this.loadSongs();
     this.loadFavorites();
+    this.isModeratorOrAdmin = this.userService.isModeratorOrAdmin();
   }
 
   loadSongs() {
