@@ -4,6 +4,9 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>CEANGI APP</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="person-circle" slot="icon-only" routerLink="/profile"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 
   <ion-segment (ionChange)="segmentChanged($event)" value="apps">

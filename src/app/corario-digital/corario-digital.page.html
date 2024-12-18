@@ -4,6 +4,9 @@
       <ion-back-button (click)="goBack()" text="Indietro"></ion-back-button>
     </ion-buttons>
     <ion-title>Corario Digital</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="person-circle" slot="icon-only" routerLink="/profile"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 
   <ion-segment (ionChange)="segmentChanged($event)" value="coros">
