@@ -11,6 +11,11 @@ import { Location } from '@angular/common'; // Import Location
 })
 export class InsertSongComponent {
 
+  languages = [
+    { label: "Italiano", value: "it" },
+    { label: "Español", value: "es" }
+  ];
+
   chords = [
     { label: "Do maggiore", value: "C" },
     { label: "Do minore", value: "Cm" },
@@ -70,6 +75,7 @@ export class InsertSongComponent {
       index: ['', Validators.required],
       title: ['', Validators.required],
       chord: [''],
+      lang: [''],
       lyrics: ['', Validators.required]
     });
   }
@@ -95,6 +101,7 @@ export class InsertSongComponent {
         title: this.songForm.get('title')?.value,
         lyrics: this.songForm.get('lyrics')?.value,
         chord: this.songForm.get('chord')?.value,
+        lang: this.songForm.get('lang')?.value,
       };
 
       this.songService.createSong(newSong).subscribe({

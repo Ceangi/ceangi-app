@@ -12,6 +12,11 @@ import { UserService } from 'src/services/user.service';
 })
 export class CorarioDigitalPage {
   selectedSegment: string = 'coros';
+  selectedLanguage: string = 'all'; // Default to show all languages
+  availableLanguages: any[] = [
+    { label: "Italiano", value: "it" },
+    { label: "Español", value: "es" }
+  ]; // Add available languages here
 
   constructor(
     private navCtrl: NavController,
@@ -64,6 +69,10 @@ export class CorarioDigitalPage {
       );
     }
 
+    if (this.selectedLanguage !== 'all') {
+      filtered = filtered.filter(song => song.lang === this.selectedLanguage);
+    }
+
     // Sort alphabetically by title
     return filtered.sort((a, b) => a.title.localeCompare(b.title));
   }
@@ -72,6 +81,11 @@ export class CorarioDigitalPage {
     return this.showFavorites
       ? this.songs.filter(song => song.isFavorite)
       : this.filteredSongs;
+  }
+
+  filterByLanguage() {
+    // Triggered when the language filter changes
+    this.displayedSongs; // Refresh displayed songs
   }
 
   // Toggle favorite status of a song

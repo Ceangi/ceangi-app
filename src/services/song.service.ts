@@ -7,6 +7,7 @@ export interface Song {
     id?: number;
     index?: number,
     title: string;
+    lang?: string;
     lyrics?: string,
     chord?: string,
     link?: string;

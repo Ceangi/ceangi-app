@@ -35,6 +35,13 @@
           </ion-select>
         </ion-item>
         <ion-item>
+          <ion-label position="stacked">Linguaggio</ion-label>
+          <ion-select formControlName="lang" placeholder="Seleziona linguaggio">
+            <ion-select-option *ngFor="let language of languages" [value]="language.value">{{ language.label
+              }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
           <quill-editor formControlName="lyrics" class="editor"></quill-editor>
         </ion-item>
         <ion-button expand="block" [disabled]="!songForm.valid" type="submit">Salva</ion-button>

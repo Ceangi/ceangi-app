@@ -12,7 +12,7 @@
 <ion-content>
     <ion-card>
         <ion-card-header>
-            <ion-card-title>Modifica dettagli coro</ion-card-title>
+            <ion-card-title>Modifica dettagli cantico</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -36,9 +36,16 @@
                 </ion-item>
 
                 <ion-item>
+                    <ion-label position="stacked">Linguaggio</ion-label>
+                    <ion-select formControlName="lang" placeholder="Seleziona linguaggio">
+                        <ion-select-option *ngFor="let language of languages" [value]="language.value">{{ language.label
+                            }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+
+                <ion-item>
                     <ion-label position="stacked"></ion-label>
-                    <quill-editor formControlName="lyrics" class="editor"
-                        placeholder="Inserisci testo"></quill-editor>
+                    <quill-editor formControlName="lyrics" class="editor" placeholder="Inserisci testo"></quill-editor>
                 </ion-item>
 
                 <ion-button expand="block" [disabled]="!songForm.valid" type="submit">Salva</ion-button>

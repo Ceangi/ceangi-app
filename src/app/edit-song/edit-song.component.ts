@@ -12,7 +12,10 @@ import { NavController, ToastController } from '@ionic/angular';
 export class EditSongComponent implements OnInit {
     songForm!: FormGroup;
     songId: string = "";
-
+    languages = [
+        { label: "Italiano", value: "it" },
+        { label: "Español", value: "es" }
+    ];
     chords = [
         { label: "Do maggiore", value: "C" },
         { label: "Do minore", value: "Cm" },
@@ -69,7 +72,8 @@ export class EditSongComponent implements OnInit {
             index: ['', Validators.required],
             title: ['', Validators.required],
             lyrics: ['', Validators.required],
-            chord: ['']
+            chord: [''],
+            lang: ['']
         });
     }
 
@@ -80,7 +84,8 @@ export class EditSongComponent implements OnInit {
                     index: data.index,
                     title: data.title,
                     lyrics: data.lyrics,
-                    chord: data.chord
+                    chord: data.chord,
+                    lang: data.lang
                 });
             },
             error => {

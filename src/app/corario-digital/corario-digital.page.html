@@ -23,57 +23,63 @@
   <ng-container *ngIf="selectedSegment === 'coros'">
     <ion-grid>
       <ion-row>
-        <!-- Alphabetical filter panel -->
         <ion-col size="2">
           <ion-list class="alphabet-list">
             <ion-item>
               <ion-icon name="heart" [color]="showFavorites ? 'danger' : 'medium'"
                 (click)="showFavorites = !showFavorites"></ion-icon>
             </ion-item>
-
             <ion-item *ngFor="let letter of alphabet" (click)="filterByLetter(letter)">
               <ion-label>{{ letter }}</ion-label>
             </ion-item>
           </ion-list>
         </ion-col>
-
         <ion-col size="10">
-          <!-- Search bar -->
           <div class="search-container">
             <ion-searchbar [(ngModel)]="searchTerm" placeholder="Cerca titolo"></ion-searchbar>
+          </div>
+          <div class="actions-container">
             <ion-button size="small" (click)="clearFilters()">
               <ion-icon slot="start" name="refresh"></ion-icon>
             </ion-button>
             <ion-button *ngIf="isModeratorOrAdmin" size="small" (click)="goToInsertSong()">
               <ion-icon slot="start" name="add"></ion-icon>
             </ion-button>
+            <div class="language-filter-container">
+              <ion-select placeholder="Seleziona lingua" [(ngModel)]="selectedLanguage" (ionChange)="filterByLanguage()"
+                interface="popover">
+                <ion-select-option value="all">Tutte</ion-select-option>
+                <ion-select-option *ngFor="let lang of availableLanguages" [value]="lang.value">
+                  <div class="language-option">
+                    <img class="flag" [src]="'assets/flags/' + lang.value + '.png'" alt="{{ lang.value }} flag">
+                    {{ lang.label }}
+                  </div>
+                </ion-select-option>
+              </ion-select>
+            </div>
           </div>
-
-          <!-- Reset filters button -->
-
           <div class="displayed-song-container">
-            <span>{{ displayedSongs.length }} coros</span>
+            <span>{{ displayedSongs.length }} cantici</span>
           </div>
           <!-- Songs list -->
           <ion-list class="song-list" *ngIf="displayedSongs.length > 0; else noItemsMessage">
             <ion-item *ngFor="let song of displayedSongs">
-              <ion-icon name="heart" slot="start" [color]="song.isFavorite ? 'danger' : 'medium'"
+              <ion-icon class='heart-icon' name="heart" slot="start" [color]="song.isFavorite ? 'danger' : 'medium'"
                 (click)="toggleFavorite(song)"></ion-icon>
               <ion-label (click)="openSongDetails(song)">
-                <div> <span class="index">{{ song.index }}. </span> <span class="title">{{ song.title }}</span> </div>
+                <div> <span class="index">{{ song.index }}. </span> <span class="title">{{ song.title }}</span></div>
               </ion-label>
-               <ion-icon *ngIf="isModeratorOrAdmin" name="create" slot="end" color="primary" (click)="editSong(song)"></ion-icon>
+              <img class='flag' [src]="'assets/flags/'+song.lang+'.png'">
+              <ion-icon *ngIf="isModeratorOrAdmin" name="create" slot="end" color="primary"
+                (click)="editSong(song)"></ion-icon>
               <!-- <ion-icon name="trash" slot="end" color="danger" (click)="presentDeleteConfirmation(song)"></ion-icon> -->
             </ion-item>
           </ion-list>
-
-          <!-- Template for empty state -->
           <ng-template #noItemsMessage>
             <div class="no-items-message">
               <p>Non ci sono elementi disponibili.</p>
             </div>
           </ng-template>
-
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -64,9 +64,36 @@
   }
 }
 
+ion-icon.heart-icon {
+  margin: 0.3rem 0.4rem; // Removes all margin
+  padding: 0; // Ensures no padding is applied
+  font-size: 1.5rem; // Optional: Keep the desired size
+  cursor: pointer; // Maintain the pointer for clickability
+  transition: color 0.3s ease; // Keeps the hover transition
+}
+
+.language-filter-container {
+  .language-option {
+    display: flex;
+    align-items: center;
+    gap: 8px; // Add some spacing between the flag and the text
+  }
+
+  .flag {
+    width: 20px; // Adjust size as needed
+    height: auto;
+    border-radius: 2px;
+  }
+}
+
 ::ng-deep ion-list.song-list {
   overflow: scroll;
   height: 70vh;
+  .flag {
+    width: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 ::ng-deep ion-list.alphabet-list {
   overflow: scroll;
@@ -89,11 +116,12 @@
     }
   }
 }
-.search-container {
+.search-container,
+.actions-container {
   display: flex;
   align-items: center;
   padding: 0 10px;
-
+  gap: 5px;
   ion-searchbar {
     flex-grow: 1;
     --placeholder-color: #888;
