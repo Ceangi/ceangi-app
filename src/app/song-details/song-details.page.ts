@@ -44,7 +44,7 @@ export class SongDetailsPage implements OnInit {
     this.songService.getSongById(songId).subscribe(
       (data: any) => {
         this.songTitle = data.title;
-        this.songLyrics = data.lyrics;
+        this.songLyrics = this.sanitizeLyrics(data.lyrics); // Usa la funzione per elaborare i testi
         this.songChord = data.chord;
         this.songUrl = data.url;
       },
@@ -52,6 +52,11 @@ export class SongDetailsPage implements OnInit {
         console.error('Error fetching song details', error);
       }
     );
+  }
+
+  sanitizeLyrics(lyrics: string): string {
+    // Sostituisci <p class="ql-align-center"></p> con <br>
+    return lyrics.replace(/<p class="ql-align-center"><\/p>/g, '<br>');
   }
 
   // Method to go back
