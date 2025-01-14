@@ -53,6 +53,28 @@ $last-p-margin-bottom: 0;
   line-height: 1.4;
 }
 
+ion-content {
+  background-color: #ffffff !important; /* White background */
+  color: #000000 !important; /* Black text */
+}
+
+::ng-deep .lyrics-container {
+  background-color: #ffffff; /* Ensure lyrics container background is white */
+  color: #000000; /* Ensure text color is black */
+}
+
+::ng-deep ion-card {
+  background-color: #ffffff; /* Card background white */
+  color: #000000; /* Text color black */
+}
+
+::ng-deep .zoom-controls ion-button {
+  background-color: #ffffff !important; /* Button background */
+  color: #000000 !important; /* Button text color */
+  border: 1px solid #000000; /* Optional: border for visibility */
+}
+
+
 .song-title-container {
   font-weight: 500;
 }
